@@ -8,7 +8,7 @@ A lightweight, high-performance map tile server written in Go. It is designed to
     *   **MBTiles:** Server-side rendering of tiles from SQLite-based archives.
     *   **PMTiles:** Optimized streaming of static archives with HTTP Range request support.
 *   **Web Interface:** Includes a built-in map viewer powered by **MapLibre GL JS**, allowing for instant preview and inspection of vector tiles.
-*   **Zero External Dependencies:** Uses a pure Go SQLite implementation (`modernc.org/sqlite`), removing the need for CGO or external system libraries.
+*   **Zero External Dependencies:** Uses a pure Go SQLite implementation (`modernc.org/sqlite`).
 *   **Security:** Built-in HTTP Basic Authentication and secure path traversal protection.
 *   **Flexible Deployment:** Can serve a single file or an entire directory of map archives.
 *   **Metadata API:** Exposes internal metadata from MBTiles files via JSON endpoints.
