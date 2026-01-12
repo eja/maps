@@ -6,6 +6,7 @@ import (
 	"crypto/subtle"
 	"database/sql"
 	"embed"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -287,7 +288,13 @@ func (m *Maps) checkAuth(w http.ResponseWriter, r *http.Request) bool {
 	auth := r.Header.Get("Authorization")
 	if strings.HasPrefix(auth, "Basic ") {
 		payload := auth[6:]
-		if subtle.ConstantTimeCompare([]byte(payload), []byte(m.webAuth)) == 1 {
+
+		compareAuth := m.webAuth
+		if strings.Contains(m.webAuth, ":") {
+			compareAuth = base64.StdEncoding.EncodeToString([]byte(m.webAuth))
+		}
+
+		if subtle.ConstantTimeCompare([]byte(payload), []byte(compareAuth)) == 1 {
 			return true
 		}
 	}

@@ -3,14 +3,12 @@
 package main
 
 import (
-	"encoding/base64"
 	"flag"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/eja/maps"
 )
@@ -57,9 +55,6 @@ func main() {
 	}
 
 	if *webAuth != "" {
-		if strings.Contains(*webAuth, ":") {
-			*webAuth = base64.StdEncoding.EncodeToString([]byte(*webAuth))
-		}
 		log.Println("Basic Authentication enabled.")
 	}
 
